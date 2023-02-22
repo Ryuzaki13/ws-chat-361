@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/assets/style.css">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="center-container">
+    <h2>Введите учетные данные</h2>
+    <input name="login" type="text" placeholder="Логин">
+    <input name="password" type="password" placeholder="Пароль">
+    <input name="nickname" type="text" placeholder="Никнейм">
+    <input type="button" onclick="SignUp()" value="Регистрация">
+    <a href="/">Вход</a>
+    <div class="info"></div>
+</div>
+
+<script>
+    function SignUp() {
+        let data = {
+            login: "",
+            password: "",
+            nickname: "",
+        };
+        const inputs = document.querySelectorAll(".center-container > input[name]");
+        for (let i = 0; i < inputs.length; i++) {
+            data[inputs[i].name] = inputs[i].value;
+        }
+
+        const xhr = new XMLHttpRequest();
+        xhr.onload = () => {
+            if (xhr.status === 200) {
+                window.location.href = "/";
+            } else {
+                const infoElement = document.querySelector(".info");
+                if (infoElement) {
+                    infoElement.textContent = xhr.responseText;
+                }
+            }
+        };
+        xhr.open("POST", "/sign-up");
+        xhr.send(JSON.stringify(data));
+    }
+</script>
+
+</body>
+</html>

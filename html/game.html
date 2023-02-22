@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/assets/style.css">
+    <title>{{.}}</title>
+</head>
+<body>
+
+<script>
+    const playerName = {{.}};
+</script>
+
+<div class="game"></div>
+
+<div class="user-list"></div>
+<div class="chat">
+    <input id="Message" type="text" placeholder="Сообщение">
+    <div id="MessageLog"></div>
+    <div id="TypingInfo"></div>
+    <input type="button" id="SendMessage" value="Отправить">
+</div>
+
+<script src="/assets/script.js"></script>
+
+</body>
+</html>

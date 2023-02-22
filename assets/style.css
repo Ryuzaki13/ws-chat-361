@@ -1,0 +1,156 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+*, *::after, *::before {
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+body {
+    margin: 0;
+    height: 100vh;
+    background: #382943;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.center-container {
+    width: 320px;
+    display: grid;
+    gap: 20px;
+}
+input {
+    padding-inline-start: 5px;
+    border: none;
+    height: 28px;
+    width: 100%;
+    border-radius: 5px;
+    display: block;
+    outline: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #a69bb7;
+}
+input[type="button"]:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #ccadf5;
+    cursor: pointer;
+}
+.info {
+    color: #ff5722;
+    text-align: center;
+}
+a {
+    color: #ce93d8;
+    text-align: center;
+    font-style: italic;
+}
+h2 {
+    text-align: center;
+    color: #a69bb7;
+}
+
+#MessageLog {
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+}
+
+#MessageLog > div {
+    margin: 5px;
+}
+
+#MessageLog > div > .name {
+    font-weight: bold;
+    color: #b2e5f6;
+}
+#MessageLog > div > .message {
+    font-weight: bold;
+    color: #00ffff;
+}
+
+#MessageLog > div.self {
+    text-align: right;
+}
+#MessageLog > div.self > .name {
+    font-weight: bold;
+    color: #d6b2f6;
+}
+#MessageLog > div.self > .message {
+    font-weight: bold;
+    color: #ff00b2;
+}
+
+#MessageLog > div > .time {
+    font-size: 10px;
+    font-style: italic;
+    color: #c7c7c7;
+}
+
+
+
+#TypingInfo {
+    color: #a69bb7;
+    font-style: italic;
+    height: 20px;
+}
+
+.chat {
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+    position: fixed;
+    border-radius: 10px;
+    width: 320px;
+    min-height: 80vh;
+    max-height: 100vh;
+    display: grid;
+    grid-template-rows: 28px 1fr 28px 28px;
+    gap: 20px;
+    padding: 20px;
+    background-image: linear-gradient(45deg, rgba(47, 0, 56, 0.2), rgba(0, 49, 56, 0.2));
+}
+
+.game {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.player {
+    position: absolute;
+    z-index: 1;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    transform: translate(-50%, -50%);
+}
+
+.user-list {
+    position: fixed;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.83);
+}
+.user-list .user {
+    margin: 10px;
+    padding-left: 20px;
+    position: relative;
+}
+.user-list .user::after {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: red;
+}
+.user-list .user.online::after {
+    background-color: green;
+}

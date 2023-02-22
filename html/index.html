@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/assets/style.css">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="center-container">
+    <h2>Добро пожаловать</h2>
+    <input name="login" type="text" placeholder="Логин">
+    <input name="password" type="text" placeholder="Пароль">
+    <input type="button" onclick="SignIn()" value="Войти">
+    <a href="/sign-up">регистрация</a>
+    <div class="info"></div>
+</div>
+
+<script>
+    function SignIn() {
+        let data = {
+            login: "",
+            password: "",
+        };
+        const inputs = document.querySelectorAll(".center-container > input[name]");
+        for (let i = 0; i < inputs.length; i++) {
+            data[inputs[i].name] = inputs[i].value;
+        }
+
+        const xhr = new XMLHttpRequest();
+        xhr.onload = () => {
+            if (xhr.status === 200) {
+                console.log(xhr.response)
+                const nickname = JSON.parse(xhr.response);
+                window.location.href = "/game/" + nickname;
+            } else {
+                const infoElement = document.querySelector(".info");
+                if (infoElement) {
+                    infoElement.textContent = xhr.responseText;
+                }
+            }
+        };
+        xhr.open("POST", "/sign-in");
+        xhr.send(JSON.stringify(data));
+    }
+</script>
+
+</body>
+</html>
